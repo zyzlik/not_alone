@@ -69,7 +69,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,6 +108,14 @@ AUTHENTICATION_BACKENDS = (
 )
 
 AUTH_USER_MODEL = "users.User"
+LOGIN_REDIRECT_URL = '/cases'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/cases'
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_USERNAME_MIN_LENGTH = 3
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_ADAPTER = 'users.forms.UsernameAccountAdapter'
+USERNAME_PATTERN = '[0-9a-zA-Z_.-]{3,15}'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -128,6 +136,10 @@ INTERNAL_IPS = ['127.0.0.1',]
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    'static',
+)
+
 
 try:
     from .local_settings import *

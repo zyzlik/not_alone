@@ -1,0 +1,31 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>From struggling to dreaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  </head>
+  <body ng-app="{% block ng_app %}{% endblock %}">
+    <div class="main">
+    {% include 'nav.html' %}
+    <div class="grid-container fluid" ng-controller="{% block ng_controller %}{% endblock %}">
+    {% block content %}
+    {% endblock content %}
+    </div>
+    {% include 'footer.html' %}
+    {% block body_scripts %}
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="{% static 'js/app.js' %}"></script>
+    {% endblock %}
+    </div>
+  </body>
+</html>
