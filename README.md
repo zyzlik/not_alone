@@ -1,3 +1,6 @@
 To setup local development environment simply run
-chmod u+x setup.sh
-./setup.sh
+
+
+<code>chmod u+x setup.sh</code>
+
+<code>./setup.sh</code>
