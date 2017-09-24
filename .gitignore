@@ -3,3 +3,4 @@ core/local_settings.py
 *~
 *.swp
 .idea
+env/*
