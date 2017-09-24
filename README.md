@@ -1,8 +1,3 @@
-- clone repository
-- create and acrivate enviroment with python 3.5
-- create postgresql DB
-- create local_settings file in core folder
-- add database configuration to local_settings file
-- pip install -r requirements.txt
-- python manage.py makemigrations
-- python manage.py migrate
+To setup local development environment simply run
+chmod u+x setup.sh
+./setup.sh
