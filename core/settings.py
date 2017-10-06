@@ -139,6 +139,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     'static',
 )
+MEDIA_URL = '/media/'
 
 
 try:

@@ -2,11 +2,20 @@
 {% block ng_app %}cases{% endblock %}
 {% block ng_controller %}CaseListController{% endblock %}
 {% block content %}
-{% verbatim %}
-    <div class="panel" ng-repeat="case in cases">
-        <div class="panel-heading clearfix">
-            <h3 class="panel-title">{{ case.title }}</h3>
+    <div class="grid-container">
+    <div class="callout primary">
+        <div class="row column">
+        <h1>Explore cases!</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla.</p>
         </div>
     </div>
+    <div class="grid-x grid-margin-x text-center">
+{% verbatim %}
+    <div ng-repeat="case in cases" class="large-3 cell">
+        <img class="thumbnail" ng-src="{{case.image}}">
+        <h5>{{ case.title }}</h5>
+    </div>
 {% endverbatim %}
+    </div>
+    </div>
 {% endblock %}

@@ -12,7 +12,8 @@ class StageSerializer(serializers.ModelSerializer):
 
 class CaseSerializer(serializers.ModelSerializer):
     stages = serializers.ListField(child=StageSerializer(), source='get_stages')
+    image = serializers.ImageField()
 
     class Meta:
         model = Case
-        fields = ['id', 'title', 'stages']
+        fields = ['id', 'title', 'stages', 'image']
