@@ -20,8 +20,8 @@ class CaseViewSet(viewsets.ReadOnlyModelViewSet):
 
 class SearchView(APIView):
     TYPES = {
-        'cases': (Case, 'title__search', CaseSerializer),
-        'users': (User, 'username__search', UserSerializer)
+        'cases': (Case, CaseSerializer),
+        'users': (User, UserSerializer)
     }
 
     def get(self, request, format=None):
@@ -40,6 +40,5 @@ class SearchView(APIView):
             return resp
 
     def perform_search(self, query, q_type):
-        model, field, serializer = self.TYPES[q_type]
-        filter_param = {field: query}
-        return serializer(model.objects.filter(**filter_param), many=True).data
+        model, serializer = self.TYPES[q_type]
+        return serializer(model.search(query), many=True).data

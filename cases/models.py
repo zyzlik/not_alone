@@ -1,3 +1,4 @@
+from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 from fields import MaxCharField
 
@@ -7,12 +8,19 @@ class Case(models.Model):
 
     class Meta:
         app_label = 'cases'
+        indexes = [
+            GinIndex(fields=['title'])
+        ]
 
     def __str__(self):
         return self.title
 
     def get_stages(self):
         return self.stage_set.all()
+
+    @classmethod
+    def search(cls, query):
+        return cls.objects.filter(title__search=query)
 
 
 class Stage(models.Model):

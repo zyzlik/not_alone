@@ -1,3 +1,4 @@
+from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -12,6 +13,9 @@ class User(AbstractUser):
 
     class Meta:
         app_label = 'users'
+        indexes = [
+            GinIndex(fields=['username'])
+        ]
 
     @property
     def cases(self):
@@ -26,3 +30,7 @@ class User(AbstractUser):
             dct[stage.case.title]['step'] = stage.step_number
             lst.append(dct)
         return lst
+
+    @classmethod
+    def search(cls, query):
+        return cls.objects.filter(username__search=query)
