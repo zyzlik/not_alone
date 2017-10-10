@@ -1,6 +1,4 @@
 {% extends "base.html" %}
-{% block ng_app %}cases{% endblock %}
-{% block ng_controller %}CaseListController{% endblock %}
 {% block content %}
     <div class="grid-container">
     <div class="callout primary">
@@ -10,12 +8,8 @@
         </div>
     </div>
     <div class="grid-x grid-margin-x text-center">
-{% verbatim %}
-    <div ng-repeat="case in cases" class="large-3 cell">
-        <img class="thumbnail" ng-src="{{case.image}}">
-        <h5>{{ case.title }}</h5>
+    <div class="large-3 cell">
     </div>
-{% endverbatim %}
     </div>
     </div>
 {% endblock %}

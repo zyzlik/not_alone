@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    cases = models.ManyToManyField("cases.Case", verbose_name="Cases")
+    stages = models.ManyToManyField("cases.Stage", verbose_name="Stages")
     avatar = models.ImageField(
         verbose_name='Avatar',
         upload_to='userpics',
@@ -12,3 +12,17 @@ class User(AbstractUser):
 
     class Meta:
         app_label = 'users'
+
+    @property
+    def cases(self):
+        return [stage.case for stage in self.stages.all()]
+
+    def get_cases(self):
+        lst = []
+        for stage in self.stages.select_related('case'):
+            dct = {}
+            dct[stage.case.title] = {}
+            dct[stage.case.title]['stage'] = stage.title
+            dct[stage.case.title]['step'] = stage.step_number
+            lst.append(dct)
+        return lst

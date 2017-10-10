@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from cases.models import Case, Stage
+from users.models import User
 
 
 class StageSerializer(serializers.ModelSerializer):
@@ -17,3 +18,11 @@ class CaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Case
         fields = ['id', 'title', 'stages', 'image']
+
+
+class UserSerializer(serializers.ModelSerializer):
+    cases = serializers.ListField(child=serializers.DictField() ,source='get_cases')
+
+    class Meta:
+        model = User
+        fields = ['username', 'cases']

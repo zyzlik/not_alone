@@ -14,12 +14,12 @@ class Case(models.Model):
     def get_stages(self):
         return self.stage_set.all()
 
+
 class Stage(models.Model):
     case = models.ForeignKey("cases.Case", verbose_name="Case")
     title = MaxCharField("Title")
     body = models.TextField()
     step_number = models.PositiveSmallIntegerField()
-    users = models.ManyToManyField("users.User", verbose_name="Users on that stage", through="cases.UserStage")
 
     class Meta:
         app_label = 'cases'
@@ -27,13 +27,3 @@ class Stage(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class UserStage(models.Model):
-    user = models.ForeignKey("users.User")
-    stage = models.ForeignKey("cases.Stage")
-
-    class Meta:
-        app_label = 'cases'
-        verbose_name = 'User-Stage'
-        unique_together = ('user', 'stage__case_id')

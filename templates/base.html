@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   </head>
-  <body ng-app="{% block ng_app %}{% endblock %}">
+  <body>
     <div class="main">
     {% include 'nav.html' %}
-    <div class="grid-container fluid" ng-controller="{% block ng_controller %}{% endblock %}">
+    <div class="grid-container fluid">
     {% block content %}
     {% endblock content %}
     </div>
@@ -24,7 +23,6 @@
     <script>
       $(document).foundation();
     </script>
-    <script src="{% static 'js/app.js' %}"></script>
     {% endblock %}
     </div>
   </body>
