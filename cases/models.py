@@ -4,6 +4,7 @@ from fields import MaxCharField
 
 class Case(models.Model):
     title = MaxCharField("Title")
+    description = models.TextField("Описание", blank=True)
     image = models.ImageField(verbose_name="Image")
 
     class Meta:
