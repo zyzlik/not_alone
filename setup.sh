@@ -37,3 +37,4 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 npm install
+./node_modules/.bin/webpack --config webpack.config.js
