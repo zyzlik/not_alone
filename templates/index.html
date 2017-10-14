@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+<div id="react-app"></div>
+{% endblock %}
+{% block body_scripts %}
+{{ block.super }}
+{% render_bundle 'main' %}
+{% endblock %}

@@ -5,3 +5,6 @@ core/local_settings.py
 .idea
 env/*
 *.save
+node_modules/*
+assets/bundles/*
+webpack-stats.json
