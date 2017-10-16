@@ -1,0 +1,22 @@
+.main {
+    min-height: 85vh;
+    position: relative;
+    background-color: #f6f8f8;
+}
+
+nav {
+margin-bottom: 20px;
+}
+
+.footer {
+    min-height: 15vh;
+    width:100%;
+}
+
+.shadow {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+.round {
+    border-radius: 50%;
+}

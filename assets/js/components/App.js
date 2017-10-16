@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import CaseList from './CaseList'
 
 
 class App extends React.Component {
     render() {
         return (
-        <div>
-            <h1>Hello Django + React = Awesomeness </h1>
-        </div>);
+            <Router>
+                <div className='container'>
+                    <Route exact path="/" component={CaseList}/>
+                </div>
+            </Router>
+        );
     }
 }
 
